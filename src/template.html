@@ -4,8 +4,8 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles.css">
-        <title>Document</title>
+        <link rel="shortcut icon" href="#">
+        <title>Task Tracker</title>
     </head>
     <body>
         <div class='left-pane'>
@@ -26,13 +26,11 @@
 
         <!--MODAL POP UP CREATE NEW PROJECT-->
         <div class='full-screen' id='new-project-form'>
-            <form class ='full-form card' name="new-project">
+            <form class ='pop-up-form' name="new-project">
                 <button type='button' class='exit-btn' id='exit-project-btn'>x</button>
-                <input type="text" placeholder="Title" id="title">
-                <input type="text" placeholder="Author" id="author">
-                <input type="number" placeholder="Pages" id="pages">
-                <input type="text" placeholder="Read" id="read">
-                <button type="button" id='submitNewBook'>Submit</button>
+                <input type="text" placeholder="Project name" id="project-name">
+                <textarea wrap='soft' placeholder="Description" id="project-description"></textarea>
+                <button class='create-btn' type="button" id='submitProject'>&#128209 Create Project</button>
             </form>
         </div>
 
@@ -43,7 +41,7 @@
                 <input type="text" placeholder="Task name" id="task-name">
                 <input type="date" placeholder="Priority" id="priority">
                 <input type="text" placeholder="Due data" id="due-date">
-                <textarea wrap='soft' placeholder="Description" id="description"></textarea>
+                <textarea wrap='soft' placeholder="Description" id="task-description"></textarea>
                 <button class='create-btn' type="button" id='submitTask'>&#9998 Create Task</button>
             </form>
         </div>

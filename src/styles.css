@@ -86,7 +86,7 @@ body {
     font-size: 30px;
 }
 
-#description {
+#project-description, #task-description {
     padding: 15px 20px;
     border-radius: 5px;
     border: 1px slategray solid;
@@ -107,7 +107,7 @@ body {
     width: 100px;
 }
 
-#submitTask {
+#submitTask, #submitProject {
     align-self: center;
     font-size: 26px;
 }

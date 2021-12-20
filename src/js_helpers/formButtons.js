@@ -12,4 +12,16 @@ const initCloseBtns = () => {
     })    
 }
 
-export {initCloseBtns}
+const initCreateBtns = () => {
+    let createProjectbtn = document.querySelector('#submitProject')
+    createProjectbtn.addEventListener('click', () => {
+        if (document.querySelector('#project-name').textContent != ' ' && document.querySelector('#project-description').textContent != ' ') {
+            console.log('saved')
+            document.querySelector('#new-project-form').style.display = 'none'
+        }
+    })    
+}
+
+
+
+export {initCloseBtns, initCreateBtns}

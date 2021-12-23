@@ -1,3 +1,5 @@
+import {printProjects, saveProject} from '../index'
+
 const initCloseBtns = () => {
     let taskExitBtn = document.querySelector('#exit-task-btn')
     taskExitBtn.addEventListener('click', () => {
@@ -15,9 +17,10 @@ const initCloseBtns = () => {
 const initCreateBtns = () => {
     let createProjectbtn = document.querySelector('#submitProject')
     createProjectbtn.addEventListener('click', () => {
-        if (document.querySelector('#project-name').textContent != ' ' && document.querySelector('#project-description').textContent != ' ') {
-            console.log('saved')
+        if (document.querySelector('#project-name').value != '' && document.querySelector('#project-description').value != '') {
             document.querySelector('#new-project-form').style.display = 'none'
+            saveProject(document.querySelector('#project-name').value, document.querySelector('#project-description').value)
+            printProjects()
         }
     })    
 }

@@ -1,6 +1,8 @@
 import './styles.css'
 import {initCloseBtns, initCreateBtns} from './js_helpers/formButtons'
 
+let projectList = []
+
 function createToDo(title, desc, dueDate, priority) {
     return {title, desc, dueDate, priority}
 }
@@ -15,18 +17,28 @@ createProjectBtn.addEventListener('click', (e) => {
     document.querySelector('#new-project-form').style.display = 'flex'
 });
 
-function createProject(projectName, projectDescription) {
-    return {projectName,
-            projectDescription}
+function createProject(name, description) {
+    return {name,
+            description}
 }
 
-let projectList = []
-projectList.push(createProject('Todays jobs', 'list of jobs for today'))
-projectList.push(createProject('Tomorrows jobs', 'list of jobs for tomorrow'))
+function saveProject(name, description) {
+    console.log(name) 
+    console.log(description)   
+    projectList.push(createProject(name, description))
+}
 
-projectList.forEach(project => {
-    console.log(project.projectName + ': ' + project.projectDescription)
-})
+
+
+function printProjects() {
+    console.log(projectList)
+    projectList.forEach(project => {
+        console.log(project.name + ': ' + project.description)
+    })
+}
+
 
 initCreateBtns()
 initCloseBtns() 
+
+export {saveProject, printProjects}

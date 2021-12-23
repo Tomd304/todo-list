@@ -111,3 +111,22 @@ body {
     align-self: center;
     font-size: 26px;
 }
+
+#table-container {
+    padding: 5%;
+}
+
+table {
+    width: 100%;
+}
+
+#table-container h2 {
+    text-align: left;
+    margin: 20px 0;
+}
+
+.remove-btn {
+    background-color: teal;
+    border: none;
+    cursor: pointer;
+}

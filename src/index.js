@@ -32,7 +32,7 @@ function saveProject(name, description) {
     console.log(name) 
     console.log(description)   
     projectList[name] = createProject(name, description)
-    createTable(projectList[name])
+    createAllTables(projectList)
 }
 
 function printProjects() {
@@ -43,16 +43,34 @@ function printProjects() {
 }
 
 function createTable(project) {
-    let pane = document.querySelector('.right-pane')
+    
     let table = createTableHeader(project.name)
     project.toDoList.forEach((task) => {
         table.appendChild(createTableRow(task))
     })
-    pane.appendChild(table)
+    return table
 }
 
 function createTableHeader(projectName) {
     let table = document.createElement('table')
+    let colGroup = document.createElement('colgroup')
+    let col1 = document.createElement('col')
+    col1.span = 1
+    col1.style = 'width: 10%'
+    let col2 = document.createElement('col')
+    col2.span = 1
+    col2.style = 'width: 35%'
+    let col3 = document.createElement('col')
+    col3.span = 1
+    col3.style = 'width: 10%'
+    let col4 = document.createElement('col')
+    col4.span = 1
+    col4.style = 'width: 10%'
+    let col5 = document.createElement('col')
+    col5.span = 1
+    col5.style = 'width: 10%'
+    colGroup.append(col1, col2, col3, col4, col5)
+
     let row = document.createElement('tr')
     let hTitle = document.createElement('th')
     hTitle.textContent = 'Task'
@@ -63,9 +81,7 @@ function createTableHeader(projectName) {
     let hPriority = document.createElement('th')
     hPriority.textContent = 'Priority'
     row.append(hTitle, hDesc, hDueDate, hPriority)
-    let heading = document.createElement('h2')
-    heading.textContent = projectName
-    table.append(heading, row)
+    table.append(colGroup, row)
     return table
 }
 
@@ -79,11 +95,28 @@ function createTableRow(task) {
     dueDate.textContent = task.dueDate
     let priority = document.createElement('td')
     priority.textContent = task.priority
-    row.append(title, desc, dueDate, priority)
+    let remove = document.createElement('td')
+    let removeBtn = document.createElement('button')
+    removeBtn.classList.add('remove-btn')
+    removeBtn.textContent = 'completed'
+    removeBtn.id = task.title + '-btn'
+    remove.appendChild(removeBtn)
+    row.append(title, desc, dueDate, priority, remove)
     return row
 
 }
 
+function createAllTables(projectList) {
+    let container = document.querySelector('#table-container')
+    container.innerHTML = ''
+    
+    Object.keys(projectList).forEach((project) => {
+        let heading = document.createElement('h2')
+        heading.textContent = project
+        container.appendChild(heading)
+        container.appendChild(createTable(projectList[project]))
+    });
+}
 
 
 
@@ -98,8 +131,7 @@ projectList["Uninmportant Items"].addTask('Celebrate Christmas', 'Enjoy!!!', '25
 initCreateBtns()
 initCloseBtns() 
 
-createTable(projectList["Default Project"])
-createTable(projectList["Uninmportant Items"])
-console.log(projectList)
+//createAllTables(projectList)
+createAllTables(projectList)
 
 export {saveProject, printProjects}

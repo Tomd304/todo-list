@@ -130,3 +130,21 @@ table {
     border: none;
     cursor: pointer;
 }
+
+table {
+    background-color: white;
+    border: 3px solid black ;
+    border-collapse: collapse;
+}
+
+.remove-btn {
+    background-color: white;
+}
+
+td, th {
+    border: 1px solid black ;
+}
+
+#table-container h2 {
+    color: white;
+}

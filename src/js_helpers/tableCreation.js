@@ -38,7 +38,7 @@ function createTableHeader(projectName) {
     return table
 }
 
-function createTableRow(task) {
+function createTableRow(task, project) {
     let row = document.createElement('tr')
     let title = document.createElement('td')
     title.textContent = task.title
@@ -52,7 +52,7 @@ function createTableRow(task) {
     let removeBtn = document.createElement('button')
     removeBtn.classList.add('remove-btn')
     removeBtn.textContent = 'remove'
-    removeBtn.id = task.title + '-btn'
+    removeBtn.id = task.title + '-btn-' + project
     remove.appendChild(removeBtn)
     row.append(title, desc, dueDate, priority, remove)
     return row
@@ -63,7 +63,7 @@ function createTable(project) {
     
     let table = createTableHeader(project.name)
     project.toDoList.forEach((task) => {
-        table.appendChild(createTableRow(task))
+        table.appendChild(createTableRow(task, project.name))
     })
     return table
 }

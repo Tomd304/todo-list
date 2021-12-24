@@ -1,13 +1,25 @@
 import {createAllTables} from './tableCreation'
-import {addTaskToProject} from '../index'
+import {addTaskToProject, getProjectList, removeTask} from '../index'
 
-function addTableBtnListeners() {
+function addTaskListeners() {
     let createTaskBtns = document.querySelectorAll('.add-btn')
     createTaskBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
             document.querySelector('#new-task-form').style.display = 'flex'
             let project = btn.id.replace('-add-btn', '')
             document.querySelector('#window-project').textContent = project
+        })
+    })
+}
+
+function rmvTaskListeners() {
+    let removeTaskBtns = document.querySelectorAll('.remove-btn')
+    removeTaskBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            let task = btn.id.split('-btn-')[0]
+            let project = btn.id.split('-btn-')[1]
+            removeTask(project, task)
+            generateDOM(getProjectList())
         })
     })
 }
@@ -22,7 +34,8 @@ function clearTaskForm() {
 
 function generateDOM(projectList) {
     createAllTables(projectList)
-    addTableBtnListeners()
+    addTaskListeners()
+    rmvTaskListeners()
     clearTaskForm()
 }
 

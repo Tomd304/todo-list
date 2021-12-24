@@ -33,6 +33,17 @@ function createProject(name, description) {
     return {name, description, toDoList, addTask}
 }
 
+function removeTask(project, title) {
+    let index = 0
+    for (let i = 0; i < projectList[project].toDoList.length; i++) {
+        if (projectList[project].toDoList[i].title == title) {
+            index = i
+            break
+        }
+    }
+    projectList[project].toDoList.splice(index, 1)
+}
+
 function storeProject(name, description) {
     console.log(name) 
     console.log(description)   
@@ -48,10 +59,11 @@ createProjectBtn.addEventListener('click', (e) => {
 
 function addTaskToProject(projectName) {
     projectList[projectName].addTask(document.querySelector('#task-name').value, 
-    document.querySelector('#task-description').value, 
-    document.querySelector('#due-date').value, 
-    document.querySelector('#priority').value
-)  
+        document.querySelector('#task-description').value, 
+        document.querySelector('#due-date').value, 
+        document.querySelector('#priority').value
+    )  
 }
 
-export {storeProject, addTaskToProject, getProjectList}
+console.log(projectList)
+export {storeProject, addTaskToProject, getProjectList, removeTask}

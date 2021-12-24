@@ -1,4 +1,6 @@
-import {printProjects, saveProject} from '../index'
+import {storeProject, addTaskToProject, getProjectList} from '../index'
+import { generateDOM } from './dynamicDOM'
+
 
 const initCloseBtns = () => {
     let taskExitBtn = document.querySelector('#exit-task-btn')
@@ -19,12 +21,28 @@ const initCreateBtns = () => {
     createProjectbtn.addEventListener('click', () => {
         if (document.querySelector('#project-name').value != '' && document.querySelector('#project-description').value != '') {
             document.querySelector('#new-project-form').style.display = 'none'
-            saveProject(document.querySelector('#project-name').value, document.querySelector('#project-description').value)
+            storeProject(document.querySelector('#project-name').value, document.querySelector('#project-description').value)
             printProjects()
         }
     })    
 }
 
+function initSubmitTaskBtn() {
+    let submitTaskBtn = document.querySelector('#submitTask')
+    submitTaskBtn.addEventListener('click', () => {
+        let project = document.querySelector('#window-project').textContent
+        addTaskToProject(project)
+        generateDOM(getProjectList())
+        document.querySelector('#new-task-form').style.display = 'none'
+    })
+}
 
 
-export {initCloseBtns, initCreateBtns}
+function initAllBtns() {
+    initCloseBtns()
+    initCreateBtns()
+    initSubmitTaskBtn()
+}
+
+
+export {initAllBtns}

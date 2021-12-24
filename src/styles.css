@@ -125,10 +125,11 @@ table {
     margin: 20px 0;
 }
 
-.remove-btn {
-    background-color: teal;
+.remove-btn, .add-btn {
     border: none;
     cursor: pointer;
+    background-color: white;
+    text-decoration: underline;
 }
 
 table {
@@ -137,11 +138,8 @@ table {
     border-collapse: collapse;
 }
 
-.remove-btn {
-    background-color: white;
-}
-
 td, th {
+    padding: 5px 0;
     border: 1px solid black ;
 }
 

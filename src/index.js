@@ -80,7 +80,13 @@ function createTableHeader(projectName) {
     hDueDate.textContent = 'Due Date'
     let hPriority = document.createElement('th')
     hPriority.textContent = 'Priority'
-    row.append(hTitle, hDesc, hDueDate, hPriority)
+    let addTask = document.createElement('th')
+    let addBtn = document.createElement('button')
+    addBtn.classList.add('add-btn')
+    addBtn.textContent = 'add task'
+    addBtn.id = projectName + '-add-btn'
+    addTask.appendChild(addBtn)
+    row.append(hTitle, hDesc, hDueDate, hPriority, addTask)
     table.append(colGroup, row)
     return table
 }
@@ -98,7 +104,7 @@ function createTableRow(task) {
     let remove = document.createElement('td')
     let removeBtn = document.createElement('button')
     removeBtn.classList.add('remove-btn')
-    removeBtn.textContent = 'completed'
+    removeBtn.textContent = 'remove'
     removeBtn.id = task.title + '-btn'
     remove.appendChild(removeBtn)
     row.append(title, desc, dueDate, priority, remove)

@@ -48,13 +48,19 @@ function createTableRow(task, project) {
     dueDate.textContent = task.dueDate
     let priority = document.createElement('td')
     priority.textContent = task.priority
-    let remove = document.createElement('td')
+    let btns = document.createElement('td')
+    let changeBtn = document.createElement('button')
+    changeBtn.classList.add('change-btn')
+    changeBtn.textContent = 'change'
+    changeBtn.id = task.title + '-btn-' + project
+    btns.appendChild(changeBtn)
     let removeBtn = document.createElement('button')
     removeBtn.classList.add('remove-btn')
     removeBtn.textContent = 'remove'
     removeBtn.id = task.title + '-btn-' + project
-    remove.appendChild(removeBtn)
-    row.append(title, desc, dueDate, priority, remove)
+    btns.appendChild(removeBtn)
+
+    row.append(title, desc, dueDate, priority, btns)
     return row
 
 }

@@ -21,6 +21,17 @@ function getProjectList() {
     return projectList
 }
 
+function getTaskDetails(project, title) {
+    let index = 0
+    for (let i = 0; i < projectList[project].toDoList.length; i++) {
+        if (projectList[project].toDoList[i].title == title) {
+            index = i
+            break
+        }
+    }
+    return projectList[project].toDoList[index]
+}
+
 function createTask(title, desc, dueDate, priority) {
     return {title, desc, dueDate, priority}
 }
@@ -42,6 +53,20 @@ function removeTask(project, title) {
         }
     }
     projectList[project].toDoList.splice(index, 1)
+}
+
+function changeTask(project, title) {
+    let index = 0
+    for (let i = 0; i < projectList[project].toDoList.length; i++) {
+        if (projectList[project].toDoList[i].title == title) {
+            index = i
+            break
+        }
+    }
+    projectList[project].toDoList[index].title = document.querySelector('#change-task-name').value
+    projectList[project].toDoList[index].desc = document.querySelector('#change-task-description').value
+    projectList[project].toDoList[index].dueDate = document.querySelector('#change-due-date').value
+    projectList[project].toDoList[index].title = document.querySelector('#change-priority').value
 }
 
 function storeProject(name, description) {
@@ -66,4 +91,4 @@ function addTaskToProject(projectName) {
 }
 
 console.log(projectList)
-export {storeProject, addTaskToProject, getProjectList, removeTask}
+export {storeProject, addTaskToProject, getProjectList, removeTask, changeTask, getTaskDetails}

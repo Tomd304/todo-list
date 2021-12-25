@@ -2,6 +2,20 @@ import './styles.css'
 import {initAllBtns} from './js_helpers/initDOM'
 import {generateDOM} from './js_helpers/dynamicDOM'
 
+
+let projectList = {}
+
+if (localStorage.getItem('projectList')) {
+    projectList = JSON.parse(localStorage.getItem('projectList'))
+}
+else {
+    createPlaceHolderInfo()   
+}
+
+generateDOM(projectList)
+initAllBtns()
+
+
 function createPlaceHolderInfo() {
     storeProject('Default Project', 'Default Description')
     storeProject('Uninmportant Items', 'Uninmportant Description')
@@ -9,12 +23,6 @@ function createPlaceHolderInfo() {
     projectList["Default Project"].addTask('Wash Car', 'Wash & wax car', '2021-12-23', 2)
     projectList["Uninmportant Items"].addTask('Celebrate Christmas', 'Enjoy!!!', '2021-12-25', 1)    
 }
-
-
-let projectList = {}
-createPlaceHolderInfo()
-generateDOM(projectList)
-initAllBtns()
 
 
 function getProjectList() {

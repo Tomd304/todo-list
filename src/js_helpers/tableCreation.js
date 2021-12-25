@@ -84,6 +84,7 @@ function createAllTables(projectList) {
         container.appendChild(heading)
         container.appendChild(createTable(projectList[project]))
     });
+    localStorage.setItem('projectList', JSON.stringify(projectList)) 
 }
 
 export {createAllTables}

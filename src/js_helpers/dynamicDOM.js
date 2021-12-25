@@ -34,7 +34,7 @@ function changeTaskListeners() {
             console.log(taskDetails)
             document.querySelector('#change-task-name').value = taskDetails.title
             document.querySelector('#change-task-description').value = taskDetails.desc
-            //document.querySelector('#change-due-date').value = taskDetails.dueDate
+            document.querySelector('#change-due-date').value = taskDetails.dueDate.split("/").reverse().join("-")
             document.querySelector('#change-priority').value = taskDetails.priority  
             document.querySelector('#submit-change-task').dataset.project = project
             document.querySelector('#submit-change-task').dataset.task = task

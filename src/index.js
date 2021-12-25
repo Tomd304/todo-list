@@ -5,9 +5,9 @@ import {generateDOM} from './js_helpers/dynamicDOM'
 function createPlaceHolderInfo() {
     storeProject('Default Project', 'Default Description')
     storeProject('Uninmportant Items', 'Uninmportant Description')
-    projectList["Default Project"].addTask('Read Email', 'Read all emails from today', '11/12/2021', 1)
-    projectList["Default Project"].addTask('Wash Car', 'Wash & wax car', '23/12/2021', 2)
-    projectList["Uninmportant Items"].addTask('Celebrate Christmas', 'Enjoy!!!', '25/12/2021', 1)    
+    projectList["Default Project"].addTask('Read Email', 'Read all emails from today', '2021-12-11', 1)
+    projectList["Default Project"].addTask('Wash Car', 'Wash & wax car', '2021-12-23', 2)
+    projectList["Uninmportant Items"].addTask('Celebrate Christmas', 'Enjoy!!!', '2021-12-25', 1)    
 }
 
 

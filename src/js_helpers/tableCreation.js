@@ -45,7 +45,7 @@ function createTableRow(task, project) {
     let desc = document.createElement('td')
     desc.textContent = task.desc
     let dueDate = document.createElement('td')
-    dueDate.textContent = task.dueDate
+    dueDate.textContent = task.dueDate.split('-').reverse().join('-')
     let priority = document.createElement('td')
     priority.textContent = task.priority
     let btns = document.createElement('td')

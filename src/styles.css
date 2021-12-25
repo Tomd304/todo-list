@@ -11,28 +11,15 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-.left-pane {
-    flex-grow: 1;
-    background-color:#000;
-    height: 100vh;
-    color: teal;
-    padding: 40px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 40px
-}
-
-.right-pane {
+.pane {
     flex-grow: 3; 
     background-color:teal;
     height: 100vh;
     color: black;
-    padding: 40px;
+    padding: 5%;
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 40px
 }
 
 #select-project {
@@ -42,6 +29,7 @@ body {
 .buttons-div {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     gap: 40px;
 }
 
@@ -114,7 +102,7 @@ body {
 }
 
 #table-container {
-    padding: 5%;
+    padding: 20px 0;
 }
 
 table {

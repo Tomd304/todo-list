@@ -30,6 +30,7 @@ function changeTaskListeners() {
         btn.addEventListener('click', () => {
             let task = btn.id.split('-btn-')[0]
             let project = btn.id.split('-btn-')[1]
+            console.log(getProjectList()[project].toDoList[0])
             let taskDetails = getTaskDetails(project, task)
             console.log(taskDetails)
             document.querySelector('#change-task-name').value = taskDetails.title
@@ -38,7 +39,7 @@ function changeTaskListeners() {
             document.querySelector('#change-priority').value = taskDetails.priority  
             document.querySelector('#submit-change-task').dataset.project = project
             document.querySelector('#submit-change-task').dataset.task = task
-            document.querySelector('#change-task-form').style.display = 'flex'
+            document.querySelector('#change-task-form').style.display = 'flex' 
         })
     })
 }

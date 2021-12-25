@@ -4,14 +4,15 @@ import {generateDOM} from './js_helpers/dynamicDOM'
 
 
 let projectList = {}
-
+/*
 if (localStorage.getItem('projectList')) {
     projectList = JSON.parse(localStorage.getItem('projectList'))
 }
 else {
     createPlaceHolderInfo()   
 }
-
+*/
+createPlaceHolderInfo()
 generateDOM(projectList)
 initAllBtns()
 
@@ -71,10 +72,13 @@ function changeTask(project, title) {
             break
         }
     }
+    console.log(projectList[project].toDoList[index].title)
+    console.log('to')
+    console.log(document.querySelector('#change-task-name').value)
     projectList[project].toDoList[index].title = document.querySelector('#change-task-name').value
     projectList[project].toDoList[index].desc = document.querySelector('#change-task-description').value
     projectList[project].toDoList[index].dueDate = document.querySelector('#change-due-date').value
-    projectList[project].toDoList[index].title = document.querySelector('#change-priority').value
+    projectList[project].toDoList[index].priority = document.querySelector('#change-priority').value
 }
 
 function storeProject(name, description) {

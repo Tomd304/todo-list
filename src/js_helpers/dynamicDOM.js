@@ -1,5 +1,5 @@
 import {createAllTables} from './tableCreation'
-import {addTaskToProject, getProjectList, removeTask, getTaskDetails} from '../index'
+import {getProjectList, removeTask, getTaskDetails} from '../index'
 
 function addTaskListeners() {
     let createTaskBtns = document.querySelectorAll('.add-btn')

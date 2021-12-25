@@ -4,25 +4,23 @@ import {generateDOM} from './js_helpers/dynamicDOM'
 
 
 let projectList = {}
-/*
 if (localStorage.getItem('projectList')) {
     projectList = JSON.parse(localStorage.getItem('projectList'))
 }
 else {
     createPlaceHolderInfo()   
 }
-*/
-createPlaceHolderInfo()
 generateDOM(projectList)
+console.log(projectList)
 initAllBtns()
 
 
 function createPlaceHolderInfo() {
     storeProject('Default Project', 'Default Description')
     storeProject('Uninmportant Items', 'Uninmportant Description')
-    projectList["Default Project"].addTask('Read Email', 'Read all emails from today', '2021-12-11', 1)
-    projectList["Default Project"].addTask('Wash Car', 'Wash & wax car', '2021-12-23', 2)
-    projectList["Uninmportant Items"].addTask('Celebrate Christmas', 'Enjoy!!!', '2021-12-25', 1)    
+    addTask('Read Email', 'Read all emails from today', '2021-12-11', 1, "Default Project")
+    addTask('Wash Car', 'Wash & wax car', '2021-12-23', 2, "Default Project")
+    addTask('Celebrate Christmas', 'Enjoy!!!', '2021-12-25', 1, "Uninmportant Items")    
 }
 
 
@@ -45,11 +43,12 @@ function createTask(title, desc, dueDate, priority) {
     return {title, desc, dueDate, priority}
 }
 
+function addTask(title, desc, dueDate, priority, project) {
+    projectList[project].toDoList.push(createTask(title, desc, dueDate, priority))
+}
+
 function createProject(name, description) {
     let toDoList = []
-    function addTask(title, desc, dueDate, priority) {
-        toDoList.push(createTask(title, desc, dueDate, priority))
-    }
     return {name, description, toDoList, addTask}
 }
 
@@ -94,13 +93,5 @@ createProjectBtn.addEventListener('click', (e) => {
     document.querySelector('#new-project-form').style.display = 'flex'
 });
 
-function addTaskToProject(projectName) {
-    projectList[projectName].addTask(document.querySelector('#task-name').value, 
-        document.querySelector('#task-description').value, 
-        document.querySelector('#due-date').value, 
-        document.querySelector('#priority').value
-    )  
-}
-
 console.log(projectList)
-export {storeProject, addTaskToProject, getProjectList, removeTask, changeTask, getTaskDetails}
+export {storeProject, addTask, getProjectList, removeTask, changeTask, getTaskDetails}

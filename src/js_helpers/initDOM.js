@@ -1,4 +1,4 @@
-import {storeProject, addTaskToProject, getProjectList, changeTask} from '../index'
+import {storeProject, getProjectList, changeTask, addTask} from '../index'
 import { generateDOM } from './dynamicDOM'
 
 
@@ -34,7 +34,11 @@ function initSubmitTaskBtn() {
     let submitTaskBtn = document.querySelector('#submitTask')
     submitTaskBtn.addEventListener('click', () => {
         let project = document.querySelector('#window-project').textContent
-        addTaskToProject(project)
+        addTask(document.querySelector('#task-name').value, 
+        document.querySelector('#task-description').value, 
+        document.querySelector('#due-date').value, 
+        document.querySelector('#priority').value,
+        project)
         generateDOM(getProjectList())
         document.querySelector('#new-task-form').style.display = 'none'
     })

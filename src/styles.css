@@ -8,30 +8,18 @@ body {
     height: 100%;
     width: 100%;
     display: flex;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-.left-pane {
-    flex-grow: 1;
-    background-color:#000;
-    height: 100vh;
-    color: teal;
-    padding: 40px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 40px
-}
-
-.right-pane {
+.pane {
     flex-grow: 3; 
     background-color:teal;
     height: 100vh;
     color: black;
-    padding: 40px;
+    padding: 5%;
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 40px
 }
 
 #select-project {
@@ -41,10 +29,11 @@ body {
 .buttons-div {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     gap: 40px;
 }
 
-.create-btn {
+.create-btn, .change-submit-btn {
     align-self: flex-start;
     border: 2px whitesmoke solid;
     font-size: 18px;
@@ -86,7 +75,7 @@ body {
     font-size: 30px;
 }
 
-#project-description, #task-description {
+#project-description, #task-description, #change-task-description, #change-project-description {
     padding: 15px 20px;
     border-radius: 5px;
     border: 1px slategray solid;
@@ -107,13 +96,13 @@ body {
     width: 100px;
 }
 
-#submitTask, #submitProject {
+#submitTask, #submitProject, #submit-change-task {
     align-self: center;
     font-size: 26px;
 }
 
 #table-container {
-    padding: 5%;
+    padding: 20px 0;
 }
 
 table {
@@ -125,11 +114,12 @@ table {
     margin: 20px 0;
 }
 
-.remove-btn, .add-btn {
+.remove-btn, .add-btn, .change-btn {
     border: none;
     cursor: pointer;
     background-color: white;
     text-decoration: underline;
+    margin: 0 3px;
 }
 
 table {

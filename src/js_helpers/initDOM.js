@@ -1,19 +1,22 @@
-import {storeProject, addTaskToProject, getProjectList} from '../index'
+import {storeProject, getProjectList, changeTask, addTask} from '../index'
 import { generateDOM } from './dynamicDOM'
 
 
 const initCloseBtns = () => {
     let taskExitBtn = document.querySelector('#exit-task-btn')
     taskExitBtn.addEventListener('click', () => {
-        console.log('taskexit pressed')
         document.querySelector('#new-task-form').style.display = 'none'
     })
 
     let projectExitBtn = document.querySelector('#exit-project-btn')
     projectExitBtn.addEventListener('click', () => {
-        console.log('projectexit pressed')
         document.querySelector('#new-project-form').style.display = 'none'
-    })    
+    })  
+    
+    let changeTaskExitBtn = document.querySelector('#exit-change-task-btn')
+    changeTaskExitBtn.addEventListener('click', () => {
+        document.querySelector('#change-task-form').style.display = 'none'
+    }) 
 }
 
 const initCreateBtns = () => {
@@ -31,17 +34,33 @@ function initSubmitTaskBtn() {
     let submitTaskBtn = document.querySelector('#submitTask')
     submitTaskBtn.addEventListener('click', () => {
         let project = document.querySelector('#window-project').textContent
-        addTaskToProject(project)
+        addTask(document.querySelector('#task-name').value, 
+        document.querySelector('#task-description').value, 
+        document.querySelector('#due-date').value, 
+        document.querySelector('#priority').value,
+        project)
         generateDOM(getProjectList())
         document.querySelector('#new-task-form').style.display = 'none'
     })
 }
+
+function initSubmitChangeTaskBtn() {
+    let submitTaskBtn = document.querySelector('#submit-change-task')
+    submitTaskBtn.addEventListener('click', () => {
+        changeTask(document.querySelector('#submit-change-task').dataset.project, document.querySelector('#submit-change-task').dataset.task)
+        generateDOM(getProjectList())
+        document.querySelector('#change-task-form').style.display = 'none'
+    })
+}
+
+
 
 
 function initAllBtns() {
     initCloseBtns()
     initCreateBtns()
     initSubmitTaskBtn()
+    initSubmitChangeTaskBtn()
 }
 
 

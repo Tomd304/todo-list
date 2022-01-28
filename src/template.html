@@ -8,14 +8,7 @@
         <title>Task Tracker</title>
     </head>
     <body>
-        <div class='left-pane'>
-            <h1>MENU</h1>
-            <h2>Select Project:</h2>
-            <select id='select-project' required> 
-                <option value="no-project">Unassigned to Project</option>
-            </select>
-        </div>
-        <div class='right-pane'>
+        <div class='pane'>
             <div class='buttons-div'>
                 <button type='button' class='create-btn' id='create-project'>&#128209 Create Project</button>
             </div>
@@ -45,5 +38,18 @@
                 <button class='create-btn' type="button" id='submitTask'>&#9998 Create Task</button>
             </form>
         </div>
+
+        <!--MODAL POP UP CREATE NEW TASK-->
+        <div class='full-screen' id='change-task-form'>
+            <form class ='pop-up-form' name="change-task">
+                <button type='button' class='exit-btn' id='exit-change-task-btn'>x</button>
+                <input type="text" placeholder="Task name" id="change-task-name">
+                <input type="text" placeholder="Priority" id="change-priority">
+                <input type="date" placeholder="Due date" id="change-due-date">
+                <textarea wrap='soft' placeholder="Description" id="change-task-description"></textarea>
+                <button class='change-submit-btn' type="button" id='submit-change-task'>&#9998 Save Changes</button>
+            </form>
+        </div>
+
     </body>
 </html>
